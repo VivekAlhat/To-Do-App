@@ -1,2 +1,3 @@
 # To-Do-App
-Desktop based todo list app using Electron
+
+To-Do list web app
