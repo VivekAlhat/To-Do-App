@@ -10,7 +10,11 @@
     <div class="container">
       <div class="header">
         <h1><%= currDate %></h1>
+        <% if (count === 1) { %>
+        <p><%= count %> Active Task</p>
+        <% } else { %>
         <p><%= count %> Active Tasks</p>
+        <% } %>
       </div>
 
       <div class="todo">
@@ -29,7 +33,8 @@
       <div class="notes">
         <% for( let index = 0; index < notes.length; index++ ) { %>
         <div class="main">
-          <p id="task"><input type="checkbox" /><%= notes[index] %></p>
+          <input type="checkbox" />
+          <p id="task"><%= notes[index] %></p>
         </div>
         <% } %>
       </div>
