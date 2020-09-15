@@ -8,6 +8,7 @@ const app = express();
 mongoose.connect("mongodb://localhost:27017/todonotes", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+  useFindAndModify: false,
 });
 
 const notesSchema = new mongoose.Schema({
@@ -47,5 +48,15 @@ app.post("/", function (request, response) {
     noteItem: t,
   });
   note.save();
+  response.redirect("/");
+});
+
+app.post("/delete", function (request, response) {
+  const checkedId = request.body.checkedTask;
+  Item.findByIdAndRemove(checkedId, function (err) {
+    if (err) {
+      console.log(err);
+    }
+  });
   response.redirect("/");
 });

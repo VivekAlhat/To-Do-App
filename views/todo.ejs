@@ -18,7 +18,7 @@
       </div>
 
       <div class="todo">
-        <form action="/" method="POST">
+        <form class="todo-form" action="/" method="POST">
           <input
             type="text"
             name="task"
@@ -30,14 +30,21 @@
         </form>
       </div>
 
-      <div class="notes">
-        <% for( let index = 0; index < notes.length; index++ ) { %>
-        <div class="main">
-          <input type="checkbox" />
-          <p id="task"><%= notes[index].noteItem %></p>
+      <form action="/delete" method="post">
+        <div class="notes">
+          <% notes.forEach(e => { %>
+          <div class="main">
+            <input
+              value="<%= e._id %>"
+              name="checkedTask"
+              type="checkbox"
+              onchange="this.form.submit()"
+            />
+            <p id="task"><%= e.noteItem %></p>
+          </div>
+          <% }); %>
         </div>
-        <% } %>
-      </div>
+      </form>
     </div>
   </body>
 </html>
