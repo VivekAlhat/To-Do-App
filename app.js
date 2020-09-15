@@ -60,3 +60,7 @@ app.post("/delete", function (request, response) {
   });
   response.redirect("/");
 });
+
+app.get("/delete", function (request, response) {
+  response.redirect("/");
+});
