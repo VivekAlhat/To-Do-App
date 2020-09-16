@@ -1,15 +1,27 @@
+require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const date = require(__dirname + "/src/date.js");
 const app = express();
 
+// Enter your credentials
+const user = process.env.USERID;
+const password = process.env.PASSWORD;
+
 // Database setup
-mongoose.connect("mongodb://localhost:27017/todonotes", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useFindAndModify: false,
-});
+mongoose.connect(
+  "mongodb+srv://" +
+    user +
+    ":" +
+    password +
+    "@todo-app.xyeek.mongodb.net/todonotes",
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+  }
+);
 
 const notesSchema = new mongoose.Schema({
   noteItem: {
